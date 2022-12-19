@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uny/=models=/user.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  final double rating;
+  final User user;
 
-  const ProfileAvatar({super.key, required this.rating});
+  const ProfileAvatar({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class ProfileAvatar extends StatelessWidget {
           child: CircleAvatar(
             radius: 50,
             backgroundColor: Colors.grey.shade300,
-            backgroundImage: const AssetImage('assets/images/avatar.png'),
+            backgroundImage: AssetImage(user.photoUrl),
           ),
         ),
         Positioned(
@@ -51,7 +52,7 @@ class ProfileAvatar extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  rating.toStringAsFixed(1),
+                  user.rating.toStringAsFixed(1),
                   style: const TextStyle(
                     fontSize: 15,
                     color: Colors.white,

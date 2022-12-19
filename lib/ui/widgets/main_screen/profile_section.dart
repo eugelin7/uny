@@ -1,8 +1,10 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:uny/data/mock_user.dart';
 import 'package:uny/ui/widgets/main_screen/profile_avatar.dart';
 import 'package:uny/ui/widgets/main_screen/profile_background.dart';
 import 'package:uny/ui/widgets/main_screen/profile_caption.dart';
+import 'package:uny/ui/widgets/main_screen/profile_characteristics.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({super.key});
@@ -39,24 +41,26 @@ class ProfileSection extends StatelessWidget {
                 ),
               ),
               child: Column(
-                children: const [
+                children: [
                   TextOneLine(
-                    'Антон Дегтярёв',
-                    style: TextStyle(
+                    mockUser.name,
+                    style: const TextStyle(
                       fontSize: 20.2,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF393939),
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 20),
+                  ProfileCharacteristics(user: mockUser)
                 ],
               ),
             ),
           ),
           // avatar
-          const Positioned(
+          Positioned(
             child: Align(
-              alignment: FractionalOffset(0.5, 0.232),
-              child: ProfileAvatar(rating: 8.7),
+              alignment: const FractionalOffset(0.5, 0.232),
+              child: ProfileAvatar(user: mockUser),
             ),
           ),
         ],
