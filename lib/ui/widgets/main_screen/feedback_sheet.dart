@@ -26,17 +26,20 @@ class FeedbackSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height - 60,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius:
-            BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        //boxShadow: [kDefaultBoxShadowHeavy],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const FeedbackSheetTitle(),
-          //ProfileAvatar(user: user),
-          //const SizedBox(height: 14),
+          // TODO: Uncomment this!
+          const ProfileAvatar(),
+          // TODO: Uncomment this!
+          const SizedBox(height: 14),
           TextOneLine(
             textAlign: TextAlign.center,
             user.name,

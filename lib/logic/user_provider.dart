@@ -11,13 +11,15 @@ class UserProvider extends ChangeNotifier {
   UserProvider(this._user);
 
   void addCharacteristics(List<Characteristic> characteristics) {
+    final newCharacteristics = {..._user.characteristics};
     for (var ch in characteristics) {
-      if (_user.characteristics.containsKey(ch)) {
-        _user.characteristics[ch] = _user.characteristics[ch]! + 1;
+      if (newCharacteristics.containsKey(ch)) {
+        newCharacteristics[ch] = newCharacteristics[ch]! + 1;
       } else {
-        _user.characteristics[ch] = 1;
+        newCharacteristics[ch] = 1;
       }
     }
+    _user = _user.copyWith(characteristics: newCharacteristics);
     notifyListeners();
   }
 

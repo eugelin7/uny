@@ -1,7 +1,7 @@
 import 'package:extended_wrap/extended_wrap.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:uny/=models=/user.dart';
+import 'package:uny/=models=/characteristic.dart';
 import 'package:uny/logic/user_provider.dart';
 
 class ProfileCharacteristics extends StatelessWidget {
@@ -30,9 +30,9 @@ class ProfileCharacteristics extends StatelessWidget {
     return fontColor;
   }
 
-  List<Widget> _characteristicItems(User user) {
+  List<Widget> _characteristicItems(Map<Characteristic, int> characteristics) {
     List<Widget> list = [];
-    user.characteristics.forEach((item, count) {
+    characteristics.forEach((item, count) {
       final chip = Container(
         padding: const EdgeInsets.fromLTRB(11, 6, 11, 6),
         decoration: BoxDecoration(
@@ -70,13 +70,14 @@ class ProfileCharacteristics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<UserProvider>().user;
+    final characteristics = context.select<UserProvider, Map<Characteristic, int>>(
+        (provider) => provider.user.characteristics);
 
     return ExtendedWrap(
       maxLines: 4,
       spacing: 8,
       runSpacing: 8,
-      children: _characteristicItems(user),
+      children: _characteristicItems(characteristics),
     );
   }
 }

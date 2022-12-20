@@ -15,25 +15,25 @@ class _FeedbackSliderState extends State<FeedbackSlider> {
   Color _colorByValue(int value) {
     switch (value) {
       case 1:
-        return Colors.red;
+        return const Color.fromRGBO(255, 67, 65, 1);
       case 2:
-        return Colors.red;
+        return const Color.fromRGBO(251, 82, 66, 1);
       case 3:
-        return Colors.red;
+        return const Color.fromRGBO(245, 107, 67, 1);
       case 4:
-        return Colors.red;
+        return const Color.fromRGBO(229, 185, 72, 1);
       case 5:
-        return Colors.red;
+        return const Color.fromRGBO(190, 219, 72, 1);
       case 6:
-        return Colors.red;
+        return const Color.fromRGBO(105, 229, 68, 1);
       case 7:
-        return Colors.red;
+        return const Color.fromRGBO(37, 241, 49, 1);
       case 8:
-        return Colors.red;
+        return const Color.fromRGBO(30, 254, 8, 1);
       case 9:
-        return Colors.green;
+        return const Color.fromRGBO(29, 255, 2, 1);
       case 10:
-        return Colors.green;
+        return const Color.fromRGBO(29, 255, 0, 1);
     }
     return Colors.grey;
   }
