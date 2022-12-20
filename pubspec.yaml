@@ -16,6 +16,7 @@ dependencies:
   equatable: ^2.0.5
   flutter_svg: ^1.1.6
   assorted_layout_widgets: ^7.0.0
+  extended_wrap: ^0.1.2
 
 dev_dependencies:
   flutter_test:

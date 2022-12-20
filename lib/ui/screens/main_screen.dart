@@ -17,7 +17,7 @@ class MainScreen extends StatelessWidget {
             const Box(
               height: 8,
               width: double.infinity,
-              color: Colors.red,
+              color: Color(0xFFF5F5F5),
             ),
             Expanded(
               child: Container(color: Colors.yellow.withOpacity(0.1)),

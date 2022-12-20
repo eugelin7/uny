@@ -5,6 +5,7 @@ import 'package:uny/ui/widgets/main_screen/profile_avatar.dart';
 import 'package:uny/ui/widgets/main_screen/profile_background.dart';
 import 'package:uny/ui/widgets/main_screen/profile_caption.dart';
 import 'package:uny/ui/widgets/main_screen/profile_characteristics.dart';
+import 'package:uny/ui/widgets/main_screen/show_more_button.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({super.key});
@@ -32,7 +33,7 @@ class ProfileSection extends StatelessWidget {
             right: 0,
             child: Container(
               height: 331,
-              padding: const EdgeInsets.fromLTRB(12, 62, 12, 12),
+              padding: const EdgeInsets.fromLTRB(15, 62, 15, 12),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -41,8 +42,10 @@ class ProfileSection extends StatelessWidget {
                 ),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TextOneLine(
+                    textAlign: TextAlign.center,
                     mockUser.name,
                     style: const TextStyle(
                       fontSize: 20.2,
@@ -51,7 +54,9 @@ class ProfileSection extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  ProfileCharacteristics(user: mockUser)
+                  ProfileCharacteristics(user: mockUser),
+                  const SizedBox(height: 19),
+                  const ShowMoreButton(),
                 ],
               ),
             ),
