@@ -8,16 +8,30 @@ class FeedbackTextField extends StatefulWidget {
 }
 
 class _FeedbackTextFieldState extends State<FeedbackTextField> {
+  final _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 60, // 128,
       child: TextField(
+        controller: _controller,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         expands: true,
         textAlignVertical: TextAlignVertical.top,
         decoration: _kTextFieldDecoration,
+        style: const TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w500,
+          color: Colors.black,
+        ),
       ),
     );
   }
@@ -31,7 +45,7 @@ const _kTextFieldDecoration = InputDecoration(
       TextStyle(fontSize: 17, fontWeight: FontWeight.normal, color: Color.fromRGBO(0, 0, 0, 0.5)),
   alignLabelWithHint: true,
   isDense: true,
-  contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 14),
+  contentPadding: EdgeInsets.symmetric(vertical: 17, horizontal: 15),
   border: OutlineInputBorder(
     borderSide: BorderSide(width: 1),
     borderRadius: _kTextFieldBorderRadius,
