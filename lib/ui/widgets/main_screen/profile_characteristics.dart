@@ -1,11 +1,11 @@
 import 'package:extended_wrap/extended_wrap.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uny/=models=/user.dart';
+import 'package:uny/logic/user_provider.dart';
 
 class ProfileCharacteristics extends StatelessWidget {
-  final User user;
-
-  const ProfileCharacteristics({super.key, required this.user});
+  const ProfileCharacteristics({super.key});
 
   static const kLevel1 = 20;
   static const kLevel2 = 70;
@@ -30,7 +30,7 @@ class ProfileCharacteristics extends StatelessWidget {
     return fontColor;
   }
 
-  List<Widget> _characteristicItems() {
+  List<Widget> _characteristicItems(User user) {
     List<Widget> list = [];
     user.characteristics.forEach((item, count) {
       final chip = Container(
@@ -70,11 +70,13 @@ class ProfileCharacteristics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<UserProvider>().user;
+
     return ExtendedWrap(
       maxLines: 4,
       spacing: 8,
       runSpacing: 8,
-      children: _characteristicItems(),
+      children: _characteristicItems(user),
     );
   }
 }

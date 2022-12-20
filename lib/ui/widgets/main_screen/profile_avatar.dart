@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uny/=models=/user.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/logic/user_provider.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  final User user;
-
-  const ProfileAvatar({super.key, required this.user});
+  const ProfileAvatar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final photoUrl = context.select<UserProvider, String>((provider) => provider.user.photoUrl);
+    final rating = context.select<UserProvider, double>((provider) => provider.user.rating);
+
     return Stack(
       alignment: Alignment.center,
       clipBehavior: Clip.none,
@@ -28,7 +30,7 @@ class ProfileAvatar extends StatelessWidget {
           child: CircleAvatar(
             radius: 50,
             backgroundColor: Colors.grey.shade300,
-            backgroundImage: AssetImage(user.photoUrl),
+            backgroundImage: AssetImage(photoUrl),
           ),
         ),
         Positioned(
@@ -52,7 +54,7 @@ class ProfileAvatar extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  user.rating.toStringAsFixed(1),
+                  rating.toStringAsFixed(1),
                   style: const TextStyle(
                     fontSize: 15,
                     color: Colors.white,

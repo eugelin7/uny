@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/=models=/review.dart';
+import 'package:uny/logic/feedback_data_provider.dart';
 
 class FeedbackTextField extends StatefulWidget {
   const FeedbackTextField({super.key});
@@ -17,11 +20,29 @@ class _FeedbackTextFieldState extends State<FeedbackTextField> {
   }
 
   @override
+  void didChangeDependencies() {
+    final initReview = Provider.of<FeedbackDataProvider>(context, listen: false).review;
+    _controller.text = initReview.text;
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final feedbackProvider = Provider.of<FeedbackDataProvider>(context, listen: false);
     return SizedBox(
+      // TODO: Вернуть 128
       height: 60, // 128,
       child: TextField(
         controller: _controller,
+        onChanged: (value) {
+          feedbackProvider.setReview(Review(
+            id: -1,
+            name: 'Eugene',
+            text: value.trim(),
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ));
+        },
         keyboardType: TextInputType.multiline,
         maxLines: null,
         expands: true,

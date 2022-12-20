@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/logic/feedback_data_provider.dart';
 import 'package:uny/ui/widgets/main_screen/feedback_sheet.dart';
 
 class GiveFeedbackButton extends StatelessWidget {
@@ -51,6 +53,7 @@ class GiveFeedbackButton extends StatelessWidget {
             child: InkWell(
                 borderRadius: kBorderRadius,
                 onTap: () {
+                  context.read<FeedbackDataProvider>().init();
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,

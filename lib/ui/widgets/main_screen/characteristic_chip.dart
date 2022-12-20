@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uny/=models=/characteristic.dart';
+import 'package:uny/logic/feedback_data_provider.dart';
 
 class CharacteristicChip extends StatefulWidget {
   final Characteristic item;
@@ -18,11 +20,19 @@ class _CharacteristicChipState extends State<CharacteristicChip> {
 
   @override
   Widget build(BuildContext context) {
+    final feedbackProvider = Provider.of<FeedbackDataProvider>(context, listen: false);
+
     return GestureDetector(
       onTap: () {
         setState(() {
           _isSelected = !_isSelected;
         });
+
+        if (_isSelected) {
+          feedbackProvider.addCharacteristic(widget.item);
+        } else {
+          feedbackProvider.removeCharacteristic(widget.item);
+        }
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(11, 6, 11, 6),

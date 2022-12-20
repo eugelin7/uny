@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/data/mock_user.dart';
+import 'package:uny/logic/feedback_data_provider.dart';
+import 'package:uny/logic/user_provider.dart';
 import 'package:uny/ui/screens/main_screen.dart';
 
 void main() {
@@ -8,13 +12,20 @@ void main() {
     statusBarColor: Colors.transparent, // transparent status bar
   ));
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<FeedbackDataProvider>(create: (_) => FeedbackDataProvider()..init()),
+        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider(mockUser)),
+      ],
+      child: const UnyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class UnyApp extends StatelessWidget {
+  const UnyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

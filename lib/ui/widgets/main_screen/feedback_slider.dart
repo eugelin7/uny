@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/logic/feedback_data_provider.dart';
 
 class FeedbackSlider extends StatefulWidget {
   const FeedbackSlider({super.key});
@@ -37,7 +39,18 @@ class _FeedbackSliderState extends State<FeedbackSlider> {
   }
 
   @override
+  void didChangeDependencies() {
+    final initRating = Provider.of<FeedbackDataProvider>(context, listen: false).rating;
+    setState(() {
+      _value = initRating.toDouble();
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final feedbackProvider = Provider.of<FeedbackDataProvider>(context, listen: false);
+
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         trackHeight: 6.0,
@@ -59,6 +72,7 @@ class _FeedbackSliderState extends State<FeedbackSlider> {
               setState(() {
                 _value = value;
               });
+              feedbackProvider.setRating(value.toInt());
             },
           ),
           Positioned(

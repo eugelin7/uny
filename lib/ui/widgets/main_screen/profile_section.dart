@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:uny/data/mock_user.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/logic/user_provider.dart';
 import 'package:uny/ui/widgets/main_screen/profile_avatar.dart';
 import 'package:uny/ui/widgets/main_screen/profile_background.dart';
 import 'package:uny/ui/widgets/main_screen/profile_caption.dart';
@@ -12,8 +13,10 @@ class ProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context, listen: false).user;
     return SizedBox(
-      height: 488,
+      // TODO: Вернуть 488
+      height: 250, //488,
       width: double.infinity,
       child: Stack(
         children: [
@@ -46,7 +49,7 @@ class ProfileSection extends StatelessWidget {
                 children: [
                   TextOneLine(
                     textAlign: TextAlign.center,
-                    mockUser.name,
+                    user.name,
                     style: const TextStyle(
                       fontSize: 20.2,
                       fontWeight: FontWeight.w500,
@@ -54,7 +57,7 @@ class ProfileSection extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  ProfileCharacteristics(user: mockUser),
+                  const ProfileCharacteristics(),
                   const SizedBox(height: 19),
                   const ShowMoreButton(),
                 ],
@@ -62,10 +65,10 @@ class ProfileSection extends StatelessWidget {
             ),
           ),
           // avatar
-          Positioned(
+          const Positioned(
             child: Align(
-              alignment: const FractionalOffset(0.5, 0.232),
-              child: ProfileAvatar(user: mockUser),
+              alignment: FractionalOffset(0.5, 0.232),
+              child: ProfileAvatar(),
             ),
           ),
         ],

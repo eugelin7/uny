@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:uny/ui/widgets/main_screen/profile_reviews.dart';
 import 'give_feedback_button.dart';
 
 class ProfileFeedbackSection extends StatelessWidget {
@@ -24,7 +24,10 @@ class ProfileFeedbackSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: 9),
-          GiveFeedbackButton()
+          GiveFeedbackButton(),
+          Expanded(
+            child: ProfileReviews(),
+          ),
         ],
       ),
     );

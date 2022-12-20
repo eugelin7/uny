@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:uny/data/mock_user.dart';
+import 'package:provider/provider.dart';
+import 'package:uny/logic/user_provider.dart';
 import 'package:uny/ui/widgets/main_screen/add_custom_characteristic_button.dart';
 import 'package:uny/ui/widgets/main_screen/feedback_bottom_section.dart';
 import 'package:uny/ui/widgets/main_screen/feedback_characteristics.dart';
@@ -20,6 +21,7 @@ class FeedbackSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context, listen: false).user;
     return Container(
       height: MediaQuery.of(context).size.height - 60,
       decoration: const BoxDecoration(
@@ -33,11 +35,11 @@ class FeedbackSheet extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const FeedbackSheetTitle(),
-          //ProfileAvatar(user: mockUser),
+          //ProfileAvatar(user: user),
           //const SizedBox(height: 14),
           TextOneLine(
             textAlign: TextAlign.center,
-            mockUser.name,
+            user.name,
             style: const TextStyle(
               fontSize: 20.2,
               fontWeight: FontWeight.w500,
