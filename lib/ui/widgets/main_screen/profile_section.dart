@@ -16,7 +16,7 @@ class ProfileSection extends StatelessWidget {
     final user = Provider.of<UserProvider>(context, listen: false).user;
     return SizedBox(
       // TODO: Вернуть 488
-      height: 488, //250, //488,
+      height: 250, //488,
       width: double.infinity,
       child: Stack(
         children: [

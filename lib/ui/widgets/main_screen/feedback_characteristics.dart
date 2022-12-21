@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uny/data/mock_characteristics.dart';
+import 'package:uny/data/mock/mock_characteristics.dart';
 import 'package:uny/ui/widgets/main_screen/characteristic_chip.dart';
 
 class FeedbackCharacteristics extends StatelessWidget {

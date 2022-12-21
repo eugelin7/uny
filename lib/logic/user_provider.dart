@@ -34,4 +34,8 @@ class UserProvider extends ChangeNotifier {
     _user = _user.copyWith(reviews: reviews);
     notifyListeners();
   }
+
+  void setInitialReviews(List<Review> reviews) {
+    _user = _user.copyWith(reviews: reviews);
+  }
 }

@@ -31,7 +31,7 @@ class _FeedbackTextFieldState extends State<FeedbackTextField> {
     final feedbackProvider = Provider.of<FeedbackDataProvider>(context, listen: false);
     return SizedBox(
       // TODO: Вернуть 128
-      height: 128, //60, // 128,
+      height: 60, // 128,
       child: TextField(
         controller: _controller,
         onChanged: (value) {

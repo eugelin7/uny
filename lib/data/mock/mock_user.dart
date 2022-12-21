@@ -1,6 +1,6 @@
 import 'package:uny/=models=/user.dart';
-import 'package:uny/data/mock_characteristics.dart';
-import 'package:uny/data/mock_reviews.dart';
+import 'package:uny/data/mock/mock_characteristics.dart';
+import 'package:uny/data/mock/mock_reviews.dart';
 
 final mockUser = User(
   id: 1,
@@ -16,5 +16,5 @@ final mockUser = User(
     mockCharacteristics[5]: 2,
     mockCharacteristics[6]: 4,
   },
-  reviews: kMockReviews,
+  reviews: [], //kMockReviews,
 );

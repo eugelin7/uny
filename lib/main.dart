@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:uny/data/mock_user.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uny/data/implementation/uny_data_service.dart';
+import 'package:uny/data/mock/mock_user.dart';
 import 'package:uny/logic/feedback_data_provider.dart';
+import 'package:uny/logic/reviews_cubit.dart';
 import 'package:uny/logic/user_provider.dart';
 import 'package:uny/ui/screens/main_screen.dart';
 
@@ -12,13 +15,23 @@ void main() {
     statusBarColor: Colors.transparent, // transparent status bar
   ));
 
+  final unyDataService = UnyDataService();
+
   runApp(
-    MultiProvider(
+    MultiBlocProvider(
       providers: [
-        Provider<FeedbackDataProvider>(create: (_) => FeedbackDataProvider()..init()),
-        ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider(mockUser)),
+        BlocProvider(
+          lazy: false,
+          create: (_) => ReviewsCubit(unyDataService: unyDataService)..getReviews(),
+        ),
       ],
-      child: const UnyApp(),
+      child: MultiProvider(
+        providers: [
+          Provider<FeedbackDataProvider>(create: (_) => FeedbackDataProvider()..init()),
+          ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider(mockUser)),
+        ],
+        child: const UnyApp(),
+      ),
     ),
   );
 }
