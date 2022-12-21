@@ -30,7 +30,7 @@ class UnyDataService implements IUnyDataService {
       //#####################################
       // Увеличиваем длительность загрузки,
       // чтобы показать красивый индикатор процесса :)
-      await Future.delayed(const Duration(milliseconds: 2500));
+      await Future.delayed(const Duration(milliseconds: 1200));
 
       return reviews;
     } on DioError catch (e) {

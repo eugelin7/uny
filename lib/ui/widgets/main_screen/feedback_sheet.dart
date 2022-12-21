@@ -37,9 +37,9 @@ class FeedbackSheet extends StatelessWidget {
         children: [
           const FeedbackSheetTitle(),
           // TODO: Uncomment this!
-          //const ProfileAvatar(),
+          const ProfileAvatar(),
           // TODO: Uncomment this!
-          //const SizedBox(height: 14),
+          const SizedBox(height: 14),
           TextOneLine(
             textAlign: TextAlign.center,
             user.name,
