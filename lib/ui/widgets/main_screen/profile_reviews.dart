@@ -4,6 +4,7 @@ import 'package:uny/=models=/review.dart';
 import 'package:uny/logic/user_provider.dart';
 import 'package:uny/ui/widgets/custom_dropdown.dart';
 import 'package:uny/ui/widgets/main_screen/review_tile.dart';
+import 'package:uny/ui/widgets/main_screen/review_tile_google.dart';
 
 //enum SortType { fromLastToFirst, fromFirstToLast }
 
@@ -34,6 +35,7 @@ class _ProfileReviewsState extends State<ProfileReviews> {
       const SizedBox(height: 12),
       Row(
         children: [
+          const SizedBox(width: 15),
           Text(
             'Сортировка:',
             style: TextStyle(
@@ -83,16 +85,19 @@ class _ProfileReviewsState extends State<ProfileReviews> {
               ),
             ),
           ),
+          const SizedBox(width: 15),
         ],
       ),
-      const SizedBox(height: 6),
+      //const SizedBox(height: 6),
       Expanded(
         child: ListView.builder(
           padding: EdgeInsets.zero,
           itemCount: reviews.length,
           itemBuilder: (_, i) => Padding(
-            padding: EdgeInsets.only(top: (i == 0) ? 0 : 10),
-            child: ReviewTile(review: reviews[i]),
+            padding: EdgeInsets.fromLTRB(15, (i == 0) ? 7 : 10, 15, 0),
+            child: (reviews[i].name.trim().toUpperCase() == 'GOOGLE')
+                ? ReviewTileGoogle(review: reviews[i])
+                : ReviewTile(review: reviews[i]),
           ),
         ),
       ),

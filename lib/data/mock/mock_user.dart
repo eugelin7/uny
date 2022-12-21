@@ -1,6 +1,5 @@
 import 'package:uny/=models=/user.dart';
 import 'package:uny/data/mock/mock_characteristics.dart';
-import 'package:uny/data/mock/mock_reviews.dart';
 
 final mockUser = User(
   id: 1,
